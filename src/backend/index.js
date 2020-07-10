@@ -4,6 +4,7 @@ const router = express.Router();
 const path = require("path");
 
 const mealsRouter = require("./api/meals");
+const reservationsRouter = require("./api/reservations");
 
 const port = process.env.PORT || 3000;
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 router.use("/meals", mealsRouter);
+router.use("/reservations",reservationsRouter);
 
 app.use("/api", router);
 
