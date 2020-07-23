@@ -12,10 +12,28 @@ router.get("/", async (request, response) => {
     throw error;
   }
 });
+
 router.get("/:id", async (req, res) => {
   try {
     const mealById = await knex("meal").where(req.params);
     res.json(mealById);
+  } catch (error) {
+    throw error;
+  }
+});
+
+router.post("/", async (req, res) => {
+  try {
+    const newMeal = {
+      title: req.body.title,
+      description: req.body.description,
+      location: req.body.location,
+      meal_time: req.body.meal_time,
+      max_reservations: req.body.quantity,
+      price: req.body.price
+    };
+    const addedMeal = await knex("meal").insert(newMeal);
+    res.send(addedMeal);
   } catch (error) {
     throw error;
   }
