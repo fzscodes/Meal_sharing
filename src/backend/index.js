@@ -19,8 +19,6 @@ app.use(express.urlencoded({ extended: true }));
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
-app.set('case sensitive routing', false);
-
 router.use("/meals", mealsRouter);
 router.use("/reservations",reservationsRouter);
 router.use("/reviews",reviewsRouter);

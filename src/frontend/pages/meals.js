@@ -38,8 +38,9 @@ const ratings = fetchReviews();
   const ul = document.querySelector("#mealList").querySelector("ul");
   meals.forEach((meal) => {
     const li = document.createElement("li");
+    const mealNameLowerCase = meal.title.toLowerCase();
     li.innerHTML = `<h3>${meal.title}</h3><br>
-                  <img src= "pages/images/${meal.title}.jpg" class="food_pictures"><br>
+                  <img src= "pages/images/${mealNameLowerCase}.jpg" class="food_pictures"><br>
                   <p class ="meal_price">${meal.price} DKK</p>
                   <p class ="meal_location"><i class="fas fa-map-marker-alt"></i> ${meal.location}</p>
                   <a href= "/meal/${meal.id}" data-navigo><button type="button" class="button">Reserve</button><a>`;
