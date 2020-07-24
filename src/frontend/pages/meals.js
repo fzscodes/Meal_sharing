@@ -1,8 +1,8 @@
-window.handleMealsRequest = async() => {
+window.handleMealsRequest = async () => {
   document.body.innerHTML = `
   <header></header>
-  <h1>Meals</h1>
-  <ul class="meals_list"></ul>
+  <h1> Our Meals</h1>
+  <div class="meals_list" id="mealList"><ul></ul></div>
   <h2>To create a meal fill the form</h2>
   <div class="meals_adding_form">
   <form onsubmit='saveNewMeal(this)' class ="meals_form">
@@ -25,22 +25,32 @@ window.handleMealsRequest = async() => {
 </div>
 <footer></footer>
 `;
-$(document).ready(function(){
-  $('header').load("pages/header.html");
- $('footer').load("pages/footer.html");
-});
+  $(document).ready(function () {
+    $("header").load("pages/header.html");
+    $("footer").load("pages/footer.html");
+  });
   // make sure the backend api works before working with it here
   const mealsResponse = await fetch("/api/meals");
   const meals = await mealsResponse.json();
 
-const ul = document.querySelector("ul");
-meals.forEach((meal) => {
-  const li = document.createElement("li");
-  li.innerHTML = `<a href = "meal/${meal.id}" data-navigo> ${meal.title}</a><br>
-                  <img src= "pages/images/${meal.title}.jpg" class= "food_pictures">`
-  ul.appendChild(li);
-});
+const ratings = fetchReviews();
+
+  const ul = document.querySelector("#mealList").querySelector("ul");
+  meals.forEach((meal) => {
+    const li = document.createElement("li");
+    li.innerHTML = `<h3>${meal.title}</h3><br>
+                  <img src= "pages/images/${meal.title}.jpg" class="food_pictures"><br>
+                  <p class ="meal_price">${meal.price} DKK</p>
+                  <p class ="meal_location"><i class="fas fa-map-marker-alt"></i> ${meal.location}</p>
+                  <a href= "/meal/${meal.id}" data-navigo><button type="button" class="button">Reserve</button><a>`;
+    ul.appendChild(li);
+  });
 };
+
+async function fetchReviews() {
+  const reviewsResponse = await fetch("/api/reviews");
+  return await reviewsResponse.json();
+}
 
 async function saveNewMeal(form) {
   const requestBody = getNewMealInputValuesAsJsonString(form);

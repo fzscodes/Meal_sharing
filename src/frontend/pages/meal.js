@@ -24,8 +24,6 @@ window.handleMealRequest = (params) => {
           <li><a href="/" data-navigo>home</a></li>
           <li><a href="/meals" data-navigo>meals</a></li>
           <li><a href="">about</a></li>
-          <li><a href="">contact</a></li>
-          <li><a href="">review</a></li>
       </ul>
   </nav>
 </div></header>
