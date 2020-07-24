@@ -3,7 +3,7 @@ window.handleMealsRequest = async () => {
   <header></header>
   <h1> Our Meals</h1>
   <div class="meals_list" id="mealList"><ul></ul></div>
-  <h2>To create a meal fill the form</h2>
+  <h2>If you would like to share a meal, please fill this form!</h2>
   <div class="meals_adding_form">
   <form onsubmit='saveNewMeal(this)' class ="meals_form">
   <label for="title">Title:</label>
