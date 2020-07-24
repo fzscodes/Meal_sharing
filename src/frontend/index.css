@@ -37,7 +37,7 @@ nav ul {
 nav li {
   display: inline-block;
   margin-left: 15px;
-  height: 70px;
+  height: 13%;
   line-height: 70px;
   transition: .5s linear;
 }
@@ -174,8 +174,13 @@ nav a:after {content: none;}
     line-height: 1.8;
   }
 }
-h1,h2{
-  padding:2%;
+h2{
+  text-align: center;
+  font-size: 2rem;
+  color:rgb(228, 59, 152);
+}
+h1{
+  padding: 2%;
   text-align: center;
   font-size: 3rem;
   color:rgb(228, 59, 152);
@@ -200,8 +205,10 @@ input[type=submit] {
   cursor: pointer;
 }
 .reservation_form{
-background-image: url(pages/woodenspoon_background.png);
+background-image: url(pages/images/food_safety_nutrition.jpg);
 color:white;
+background-repeat: no-repeat;
+  background-size: cover;;
 }
 .meals_list {
   columns: 3;
@@ -233,4 +240,11 @@ color:white;
   display: table-cell;
    text-align: center;
    vertical-align: middle;
+   
+}
+.reservation_form{
+  display: table;
+   width: 100%;
+   background-color: #f1f1f1;
+   padding:2%;
 }

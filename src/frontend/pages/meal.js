@@ -4,7 +4,6 @@ window.handleMealRequest = (params) => {
     .then((response) => response.json())
     .then((result) => {
       mealName = result.map((meal) => meal.title);
-      
     });
 
   fetch("/api/reservations")
@@ -54,20 +53,20 @@ window.handleMealRequest = (params) => {
        
         const div = document.querySelector("div.reservation_form");
         div.innerHTML = `
-  <form onsubmit='saveReservation(this,${params.id})'>
+  <form onsubmit='saveReservation(this,${params.id})' class="meals_form">
     <label for="firstName">FirstName:</label>
-    <input type="text" id="firstName" name="fname" placeholder="Your name.."><br><br>
+    <input type="text" id="firstName" name="fname" placeholder="Your name.." required><br><br>
     <label for="lname">LastName:</label>
-    <input type="text" id="lastName" name="lname" placeholder="Your last name.."><br><br>
+    <input type="text" id="lastName" name="lname" placeholder="Your last name.." required><br><br>
     <label for="phone">Phone number:</label>
     <input type="tel" id="phone" name="phone"
       placeholder="123-456-7890"
        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
        required><br><br>
        <label for="email">Email:</label>
-    <input type="email" id="email" name="email" placeholder="example@domain.com"><br><br>
+    <input type="email" id="email" name="email" placeholder="example@domain.com" required><br><br>
     <label for="quantity">Quantity (between 1 and 30):</label>
-    <input type="number" id="quantity" name="quantity" min="1" max="30">
+    <input type="number" id="quantity" name="quantity" min="1" max="30" required>
     <input type="submit" value="Submit">
   </form>`;
   
@@ -76,7 +75,7 @@ window.handleMealRequest = (params) => {
 });
       } else {
         alert("Sorry no available reservations");
-        return;
+        window.history.back();
       }
     });
 };
